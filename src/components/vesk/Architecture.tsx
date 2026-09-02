@@ -86,10 +86,10 @@ export function Architecture() {
             </div>
             <div className="px-4 py-6 sm:px-6 sm:py-8">
               <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
-                {stages[active].name}
+                {stages[active]?.name}
               </h3>
               <p className="mt-3 max-w-[44ch] font-mono text-[12.5px] leading-relaxed text-muted-foreground">
-                {stages[active].detail}
+                {stages[active]?.detail}
               </p>
             </div>
             <div className="border-t border-border px-4 py-3 font-mono text-[11px] text-muted-foreground">
