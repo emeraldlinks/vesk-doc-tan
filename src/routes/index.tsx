@@ -1,24 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Architecture } from "@/components/vesk/Architecture";
+import { CodeShowcase } from "@/components/vesk/CodeShowcase";
+import { DevExperience } from "@/components/vesk/DevExperience";
+import { Docs } from "@/components/vesk/Docs";
+import { Features } from "@/components/vesk/Features";
+import { FinalCta } from "@/components/vesk/FinalCta";
+import { Footer } from "@/components/vesk/Footer";
+import { Hero } from "@/components/vesk/Hero";
+import { Native } from "@/components/vesk/Native";
+import { Nav } from "@/components/vesk/Nav";
+import { Philosophy } from "@/components/vesk/Philosophy";
+import { Roadmap } from "@/components/vesk/Roadmap";
+import { Showcase } from "@/components/vesk/Showcase";
+import { Targets } from "@/components/vesk/Targets";
+
+const title = "Vesk — The compiler-first framework for web and native apps";
+const description =
+  "Vesk is a compiler-first application framework. Write one component model and compile it into optimized web and native Kotlin applications.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Nav />
+      <main>
+        <Hero />
+        <CodeShowcase />
+        <Philosophy />
+        <Native />
+        <Architecture />
+        <Targets />
+        <Features />
+        <DevExperience />
+        <Docs />
+        <Showcase />
+        <Roadmap />
+        <FinalCta />
+      </main>
+      <Footer />
     </div>
   );
 }
