@@ -28,11 +28,11 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
-function CodeBlock({ filename, code, meta }: { filename: string; code: string; meta?: string }) {
+function CodeBlock({ filename, code }: { filename: string; code: string }) {
   return (
     <div className="relative">
       <CopyButton code={code} />
-      <CodePanel filename={filename} meta={meta} code={code} />
+      <CodePanel filename={filename} code={code} />
     </div>
   );
 }
