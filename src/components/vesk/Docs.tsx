@@ -1,18 +1,8 @@
-import { Eyebrow, Heading, Lede, Reveal, Section } from "./primitives";
+import { Link } from "@tanstack/react-router";
 
-const nav = [
-  "Getting Started",
-  "Installation",
-  "Core Concepts",
-  "Components",
-  "Styling",
-  "Animations",
-  "Vesk Native",
-  "Compiler",
-  "npm Packages",
-  "API",
-  "Deployment",
-];
+import { docPages } from "@/content/docs";
+
+import { Heading, Lede, Reveal, Section } from "./primitives";
 
 const ecosystem = [
   ["TypeScript", "typed logic"],
@@ -40,12 +30,12 @@ export function Docs() {
               Concepts first, then reference. Every compiler behaviour, diagnostic and native
               capability is written down — not inferred from example projects.
             </Lede>
-            <a
-              href="#get-started"
+            <Link
+              to="/docs"
               className="mt-7 inline-flex items-center gap-1.5 border border-paper-foreground bg-paper-foreground px-5 py-3 font-display text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
               Read the Documentation <span aria-hidden>→</span>
-            </a>
+            </Link>
           </Reveal>
         </div>
 
@@ -55,17 +45,18 @@ export function Docs() {
               <span className="eyebrow text-paper-muted">docs / contents</span>
             </div>
             <ul className="font-mono text-[12.5px]">
-              {nav.map((item, i) => (
-                <li key={item} className="border-b border-paper-foreground/12 last:border-b-0">
-                  <a
-                    href="#docs"
+              {docPages.map((item, i) => (
+                <li key={item.slug} className="border-b border-paper-foreground/12 last:border-b-0">
+                  <Link
+                    to="/docs/$slug"
+                    params={{ slug: item.slug }}
                     className="flex items-center justify-between px-3 py-2.5 text-paper-foreground/80 transition-colors hover:bg-paper-foreground/5 hover:text-paper-foreground"
                   >
-                    <span>{item}</span>
+                    <span>{item.title}</span>
                     <span className="text-[10px] text-paper-muted">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
