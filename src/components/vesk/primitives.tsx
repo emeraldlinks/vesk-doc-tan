@@ -151,14 +151,14 @@ export function CodePanel({
   className?: string;
 }) {
   return (
-    <div className={cn("panel-strong", className)}>
+    <div className={cn("panel-strong min-w-0 overflow-hidden", className)}>
       <div className="flex items-center justify-between border-b border-border px-3 py-2">
         <span className="font-mono text-[11px] text-foreground/70">{filename}</span>
         {meta ? <span className="eyebrow text-[10px]">{meta}</span> : null}
       </div>
       <pre
         className={cn(
-          "overflow-x-auto px-4 py-4 font-mono text-[11.5px] leading-[1.75] sm:text-[12.5px]",
+          "min-w-0 max-w-full overflow-x-auto px-4 py-4 font-mono text-[11.5px] leading-[1.75] sm:text-[12.5px]",
           muted ? "text-foreground/55" : "text-foreground/85",
         )}
       >
