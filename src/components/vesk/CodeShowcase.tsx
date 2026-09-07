@@ -89,7 +89,7 @@ export function CodeShowcase() {
                 <code>{target === "web" ? webOutput : nativeOutput}</code>
               </motion.pre>
             </AnimatePresence>
-            <div className="flex items-center gap-3 border-t border-border px-3 py-2 font-mono text-[10px] text-muted-foreground">
+            <div className="flex min-w-0 items-center gap-3 border-t border-border px-3 py-2 font-mono text-[10px] text-muted-foreground">
               {stages.map((s, i) => (
                 <span key={s} className={i < stage ? "text-accent" : ""}>
                   {i < stage ? "✓" : "·"} {s}
