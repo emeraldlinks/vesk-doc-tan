@@ -51,21 +51,21 @@ export function CodeShowcase() {
         </Lede>
       </Reveal>
 
-      <div className="mt-10 grid gap-3 lg:grid-cols-2 lg:gap-6">
-        <Reveal>
+      <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-6">
+        <Reveal className="min-w-0">
           <CodePanel filename="About.vsk" meta="source" code={source} />
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="panel-strong">
-            <div className="flex items-center justify-between border-b border-border px-3 py-1.5">
-              <div className="flex">
+        <Reveal className="min-w-0" delay={0.08}>
+          <div className="panel-strong min-w-0 overflow-hidden">
+            <div className="flex min-w-0 items-center justify-between border-b border-border px-3 py-1.5">
+              <div className="flex min-w-0">
                 {(["web", "native"] as const).map((t) => (
                   <button
                     key={t}
                     type="button"
                     onClick={() => setTarget(t)}
-                    className={`px-3 py-1 font-mono text-[11px] transition-colors ${
+                    className={`shrink-0 px-3 py-1 font-mono text-[11px] transition-colors ${
                       target === t
                         ? "bg-foreground text-background"
                         : "text-muted-foreground hover:text-foreground"
@@ -75,7 +75,7 @@ export function CodeShowcase() {
                   </button>
                 ))}
               </div>
-              <span className="eyebrow text-[10px] text-accent">compiled</span>
+              <span className="eyebrow shrink-0 text-[10px] text-accent">compiled</span>
             </div>
             <AnimatePresence mode="wait" initial={false}>
               <motion.pre
@@ -84,12 +84,12 @@ export function CodeShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: [0.2, 0, 0, 1] }}
-                className="overflow-x-auto px-4 py-4 font-mono text-[11.5px] leading-[1.75] text-foreground/70 sm:text-[12.5px]"
+                className="min-w-0 max-w-full overflow-x-auto px-4 py-4 font-mono text-[11.5px] leading-[1.75] text-foreground/70 sm:text-[12.5px]"
               >
                 <code>{target === "web" ? webOutput : nativeOutput}</code>
               </motion.pre>
             </AnimatePresence>
-            <div className="flex items-center gap-3 border-t border-border px-3 py-2 font-mono text-[10px] text-muted-foreground">
+            <div className="flex min-w-0 items-center gap-3 border-t border-border px-3 py-2 font-mono text-[10px] text-muted-foreground">
               {stages.map((s, i) => (
                 <span key={s} className={i < stage ? "text-accent" : ""}>
                   {i < stage ? "✓" : "·"} {s}
